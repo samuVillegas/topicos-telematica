@@ -95,11 +95,13 @@ pm2 start server.js --name gateway
 
 ```
 sudo docker run -d -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.9-management
-cd ~ && cd topicos-telematica/reto2/server-mom/
-pm2 start server.js --name server-mom
+sleep 5
 cd ~ && cd topicos-telematica/reto2/server-grpc/
 pm2 start server.js --name server-grpc
 cd ~ && cd topicos-telematica/reto2/gateway/
 pm2 start server.js --name gateway
+cd ~ && cd topicos-telematica/reto2/server-mom/
+pm2 start server.js --name server-mom
 
 ```
+
