@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package files;
+
+service Files {
+  rpc listFiles (Empty) returns (ListFilesReply) {}
+  rpc getFile (getFileRequest) returns (ListFilesReply) {}
+}
+
+message Empty {}
+
+message ListFilesReply {
+  string message = 1;
+}
+
+message getFileRequest {
+  string fileName = 1;
+}
