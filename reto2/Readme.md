@@ -10,6 +10,8 @@ sudo apt-get update -y
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
+source ~/.bashrc
+
 nvm install 18.13.0
 
 sudo apt-get install npm -y
@@ -22,9 +24,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable" -y
 
-sudo apt update
-
-apt-cache policy docker-ce
+sudo apt update -y
 
 sudo apt install docker-ce -y
 
