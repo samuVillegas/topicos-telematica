@@ -4,9 +4,9 @@
 
 ### Instalación de paquetes
 ```
-sudo apt-get upgrade
-
-sudo apt-get update
+sudo apt-get upgrade -y
+ 
+sudo apt-get update -y
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
