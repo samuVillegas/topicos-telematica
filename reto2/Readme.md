@@ -105,3 +105,40 @@ pm2 start server.js --name server-mom
 
 ```
 
+# Configuración de script inicial
+
+1. Creamos un archivo llamado startup.sh en (~) y le ingresamos el siguiente contenido
+```
+sudo docker run -d -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.9-management
+sleep 5
+cd ~ && cd topicos-telematica/reto2/server-grpc/
+pm2 start server.js --name server-grpc
+cd ~ && cd topicos-telematica/reto2/gateway/
+pm2 start server.js --name gateway
+cd ~ && cd topicos-telematica/reto2/server-mom/
+pm2 start server.js --name server-mom
+```
+2. Le damos permiso al archivo
+```
+sudo chmod +x startup.sh
+```
+3. Abrimos el archivo .bashrc así 
+```
+nano ~/.bashrc
+```
+e ingresamos en la última parte del archivo la ruta del startup.sh, en este caso sería: 
+```
+/home/ubuntu/startup.sh &
+```
+Esto permitirá que cuando cada vez que nos conectemos a la consola se ejecuten los servicios necesarios. 
+
+***Nota:*** Posiblemente si nos conectamos una segunda vez a la consola nos salgan errores, esto sucede porque ya tendríamos los servicios montados 
+
+# Temas importante para ejecutar proyecto en instancia creada en AWS
+1. Se debe de iniciar la instancia y luego acceder a la consola para que los comandos iniciales se ejecuten correctamente
+2. Se debe habilitar el puerto 3000 como regla de entrada para hacer las peticiones en API REST
+3. El SO del servidor fue montado en Ubuntu
+
+# Descripción de servicios
+1. GET /list_files => Obtiene todos los archivos que existan
+2. GET /find_file/{name_file} => Obtiene todos los archivos filtrados por el "name_file"
