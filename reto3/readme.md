@@ -20,7 +20,9 @@ Lo que se pretendía en esta actividad es mostrar el escalamiento de una platafo
 
 En la imagen podemos ver una arquitectura que tiene en total 5 nodos explicados en el punto 1. 
 
-En la capa superior tenemos el acceso a la plataforma por medio de nuestro dominio, el cual está conectado con nuestro servidor de ngnix que tendrá nuestra configuración del ssl y servirá como balanceador de las n instancias de "Wordpress" que queramos poner en la capa de servicios, en nuestro caso solo serán dos capas, pero lo bueno de esta arquitectura es que nos permite tener esa escalabilidad si llega a ser necesario. La capa de servicios es montada con contenedores e imagenes de docker que apuntan la base de datos a el servidor que creamos de base de datos, y para los archivos a un servidor NFS que nos permitira consultar los archivos de wordpress entre maquinas sin necesida de tenerlo en trodos los nodos de servicio. 
+En la capa superior tenemos el acceso a la plataforma por medio de nuestro dominio, el cual está conectado con nuestro servidor de ngnix que tendrá nuestra configuración del ssl y servirá como balanceador de las n instancias de "Wordpress" que queramos poner en la capa de servicios, en nuestro caso solo serán dos nodos, pero lo bueno de esta arquitectura es que nos permite tener esa escalabilidad si llega a ser necesario. La capa de servicios es montada con contenedores e imagenes de docker que apuntan la base de datos a el servidor que creamos de base de datos, y para los archivos a un servidor NFS que nos permitira consultar los archivos de wordpress entre maquinas sin necesidad de tenerlo en todos los nodos de servicio. 
+
+Nota: Si se quisiera realizar una mejora a esta arquitectura se podría implementar a nivel de datos ya que si se cae el servidor de base de datos o de NFS el sistema no funcionaría correctamente. 
 
 # 3. Descripción del ambiente de desarrollo y técnico: lenguaje de programación, librerias, paquetes, etc, con sus numeros de versiones.
 1. Primero debemos de crear las 5 maquinas virtuales que tenemos que utilizar con las siguientes configuraciones
