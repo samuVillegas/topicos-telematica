@@ -41,6 +41,7 @@ cd st0263-231/docker-nginx-wordpress-ssl-letsencrypt
 sudo docker-compose -f docker-compose-solo-wordpress-db.yml up -d
 ~~~
 Allí instalamos docker y docker-compose y creamos un contenedor con una imagen de mysql
+
 3. Luego configuramos el servidor que nos servirá para compartir los archivos de wordpress entre nodos (NFS)
 ~~~
 sudo apt update
@@ -60,15 +61,16 @@ Luego ejecutamos:
 ~~~~
 sudo systemctl restart nfs-kernel-server
 ~~~~
+
 4. Configuramos nuestros servidores de wordpress asi:
 
-Nota: Cuando abrimos el archivo docker-compose-solo-wordpress-with-nfsclient.yml cambiamos <ip-private> por el id del servidor de BD creado en el punto 1
+Nota: Cuando abrimos el archivo docker-compose-solo-wordpress-with-nfsclient.yml cambiamos <ip-private> por la ip privada del servidor de BD creado en el punto 1
 
 ~~~
 sudo apt update -y
 sudo apt install nfs-common -y
 sudo mkdir -p /mnt/wordpress
-sudo mount 10.142.0.4:/var/nfs/general /mnt/wordpress
+sudo mount ip_servidor_nfs:/var/nfs/general /mnt/wordpress
 sudo apt install docker.io -y
 sudo apt install docker-compose -y
 sudo apt install git -y
@@ -144,7 +146,6 @@ http {
   
 # IP o nombres de dominio en nube o en la máquina servidor.
 DOMINIO: www.samuelvillegas.online
-# 5. otra información que considere relevante para esta actividad.
-FALTA
+
 # referencias:
 ## https://github.com/st0263eafit/st0263-231/tree/main/docker-nginx-wordpress-ssl-letsencrypt
