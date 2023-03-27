@@ -146,6 +146,9 @@ http {
   
 # IP o nombres de dominio en nube o en la máquina servidor.
 DOMINIO: www.samuelvillegas.online
-
+# Información relevante:
+  
+1. Los archivos de docker-compose fueron sacados del repositorio de referencia 
+  
 # referencias:
 ## https://github.com/st0263eafit/st0263-231/tree/main/docker-nginx-wordpress-ssl-letsencrypt
