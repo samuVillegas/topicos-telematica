@@ -1,3 +1,6 @@
+# Parte 1
+Los códigos se encuentran en esta carpeta
+
 # Parte 2
 ## 1. Conexión con primario
 ![image](https://github.com/samuVillegas/topicos-telematica/assets/50517423/300888a1-0cd8-4a76-a466-e886809fad5b)
