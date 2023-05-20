@@ -1,6 +1,6 @@
 from mrjob.job import MRJob
 
-class MRWordFrequencyCount(MRJob):
+class MRP1_3(MRJob):
 
     def mapper(self, _, line):
         idemp,sector,salary,year = line.split(',')
@@ -9,10 +9,16 @@ class MRWordFrequencyCount(MRJob):
 
     def reducer(self, key, values):
         cont = 0
-        sectors = {}
+        sectors = set()
+        long = len(sectors)
+        last_long = long
         for sector in values:
-           cont+=1
+            sectors.add(sector)
+            long = len(sectors)
+            if not last_long == long:
+                cont+=1
+            last_long = long
         yield key, cont
 
 if __name__ == '__main__':
-    MRWordFrequencyCount.run()
+    MRP1_3.run()

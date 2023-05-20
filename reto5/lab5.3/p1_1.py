@@ -1,6 +1,6 @@
 from mrjob.job import MRJob
 
-class MRWordFrequencyCount(MRJob):
+class MRP1_1(MRJob):
 
     def mapper(self, _, line):
         idemp,sector,salary,year = line.split(',')
@@ -16,4 +16,4 @@ class MRWordFrequencyCount(MRJob):
         yield sector, (sum/count)
 
 if __name__ == '__main__':
-    MRWordFrequencyCount.run()
+    MRP1_1.run()
